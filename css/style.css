@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(10deg,#EE9,#9EE);
+  background-attachment: fixed;
+}
+div {
+  padding: 10px;
+  background: linear-gradient(10deg,#FFF0,#FFF1 5%,#FFFF 20%,#FFF1 80%,#FFF0 100%);
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.btn {
+  background: linear-gradient(10deg,#EE98,#9EEF 50%);
+}
+.btn:hover {
+  background: linear-gradient(10deg,#EE98,#EE9F 50%);
+}
