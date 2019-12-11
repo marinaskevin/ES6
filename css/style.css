@@ -12,6 +12,7 @@ div {
 }
 .btn {
   background: linear-gradient(10deg,#EE98,#9EEF 50%);
+  margin: 5px;
 }
 .btn:hover {
   background: linear-gradient(10deg,#EE98,#EE9F 50%);
