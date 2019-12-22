@@ -14,14 +14,15 @@ class Deck2 {
     this.deck = deck;
   }
   createCard(suit, face) {
-    return new Card2(suit, face);
+    return Card2.for(suit, face);
   }
 }
 
 class Card2 {
-  constructor(suit, face) {
+  constructor(suit, face, value = face) {
     this.suit = suit;
     this.face = face;
+    this.value = value;
   }
   get image() {
     return `${this.suit.toLowerCase()}-${this.face.toLowerCase()}.jpg`;
@@ -39,6 +40,47 @@ class Card2 {
       default:
         return parseInt(this.face, 10);
     }
+  }
+  set value(someValue) {
+    if (typeof someValue !== 'number') {
+      throw new Error(`'value' must be numeric!`);
+    }
+    this._value = someValue;
+  }
+  static for(suit, face) {
+    switch (face.toLowerCase()) {
+      case 'ace':
+        return new CardAce(suit, face);
+      case 'king':
+        return new CardKing(suit, face);
+      case 'queen':
+        return new CardQueen(suit, face);
+      case 'jack':
+        return new CardJack(suit, face);
+      default:
+        return new Card(suit, face, parseInt(face, 10));
+    }
+  }
+}
+
+class CardAce extends Card2 {
+  constructor(suit, face) {
+    super(suit, face, 14);
+  }
+}
+class CardKing extends Card2 {
+  constructor(suit, face) {
+    super(suit, face, 13);
+  }
+}
+class CardQueen extends Card2 {
+  constructor(suit, face) {
+    super(suit, face, 12);
+  }
+}
+class CardJack extends Card2 {
+  constructor(suit, face) {
+    super(suit, face, 11);
   }
 }
 
