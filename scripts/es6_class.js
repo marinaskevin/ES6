@@ -48,17 +48,10 @@ class Card2 {
     this._value = someValue;
   }
   static for(suit, face) {
-    switch (face.toLowerCase()) {
-      case 'ace':
-        return new CardAce(suit, face);
-      case 'king':
-        return new CardKing(suit, face);
-      case 'queen':
-        return new CardQueen(suit, face);
-      case 'jack':
-        return new CardJack(suit, face);
-      default:
-        return new Card(suit, face, parseInt(face, 10));
+    try {
+      return new Cards[face.toLowerCase()](suit, face);
+    } catch {
+      return new Card(suit, face, parseInt(face, 10));
     }
   }
 }
@@ -83,6 +76,13 @@ class CardJack extends Card2 {
     super(suit, face, 11);
   }
 }
+
+const Cards = {
+  ace: CardAce,
+  king: CardKing,
+  queen: CardQueen,
+  jack: CardJack
+};
 
 const cards2 = new Deck2();
 
