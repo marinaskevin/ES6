@@ -5,13 +5,10 @@ class Deck2 {
   initialize() {
     var suits = ['Diamond', 'Heart', 'Spade', 'Club'];
     var faces = ['Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King'];
-    var deck = [];
-    for (var sindex = 0; sindex < suits.length; sindex++) {
-      for (var findex = 0; findex < faces.length; findex++) {
-        deck.push(this.createCard(suits[sindex], faces[findex]));
-      }
-    }
-    this.deck = deck;
+    this.deck = suits.map(
+      suit => faces.map(
+        face => this.createCard(suit, face)))
+      .reduce((deck, cards) => [...deck, ...cards], []);
   }
   createCard(suit, face) {
     return Card2.for(suit, face);
