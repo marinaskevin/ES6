@@ -1,8 +1,8 @@
-const timer = document.getElementById("track_timer");
+const clock = document.getElementById("clock");
 
-timer.addEventListener('tick_tock', function(e) {
-        timer.textContent = e.detail.time;
-        timer.style.color = e.detail.textColor;
+clock.addEventListener('tick_tock', function(e) {
+        clock.textContent = e.detail.time;
+        clock.style.color = e.detail.textColor;
     });
 
 
@@ -13,7 +13,7 @@ function tickTock(time,color) {
             textColor: color
         }
     });
-    timer.dispatchEvent(event);
+    clock.dispatchEvent(event);
 }
 
 function num(num) {
@@ -36,6 +36,38 @@ setInterval(function() { tickTock(new Date().toLocaleTimeString(),makeColor()) }
 //     many - register an event listener that runs n times
 //     remove - remove a handler for an event
 //     removeAll - remove all handlers for an event
+
+/*** HANDLERS ***/
+
+const timer = document.getElementById("track_timer");
+
+var handlers = [];
+
+function emit(...handlers) {
+    handlers.forEach(
+
+    );
+}
+
+function on(event_type,listener) {
+    timer.addEventListener(event_type,listener);
+}
+
+function once(event_type,listener) {
+    timer.addEventListener(event_type,listener);
+}
+
+function many() {
+    timer.addEventListener(event_type,listener);
+}
+
+function remove(event_type,listener) {
+    timer.removeEventListener(event_type,listener);
+}
+
+function removeAll() {
+
+}
 
 // Timer
 
